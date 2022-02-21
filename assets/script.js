@@ -13,19 +13,12 @@ character = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/
 //Numbers value
 number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-//Letter value
+//Letter Uppercase value
 letter = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+// Letter Lowercase value
+letter2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 var info;
-
-//Converting letters to lowercase
-var toLower = function (x) {
-  return x.toLowerCase();
-};
-
-//Variable for Lowercase
-letter2 = letter.map(toLower);
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -55,10 +48,11 @@ function writePassword() {
   if (!promptNumber && !promptCharacter && !promptUppercase && !promptLowercase) {
     info = alert("Please select a prompt to properly create a random passsword")
   }
-
+  // If 4 prompts are selected
   else if (promptCharacter && promptNumber && promptUppercase && promptLowercase) {
     info = character.concat(number, letter, letter2);
   }
+  // If 3 prompts are selected
   else if (promptCharacter && promptNumber && promptUppercase) {
     info = character.concat(number, letter);
   }
@@ -71,6 +65,7 @@ function writePassword() {
   else if (promptCharacter && promptLowercase && promptUppercase) {
     info = character.conact(letter2, letter);
   }
+  // If 2 prompts are selected
   else if (promptLowercase && promptNumber) {
     info = letter2.conact(number);
   }
@@ -89,6 +84,7 @@ function writePassword() {
   else if (promptCharacter && promptLowercase) {
     info = character.conact(letter2);
   }
+  // If 1 prompt is selected
   else if (promptNumber) {
     info = number;
   }
@@ -104,6 +100,7 @@ function writePassword() {
 
   var password = [];
 
+  // Random input for all variables
   for (var i = 0; i < input; i++) {
     var pickInfo = info[Math.floor(Math.random() * info.length)];
     password.push(pickInfo);
@@ -114,6 +111,7 @@ function writePassword() {
   return random;
 };
 
+// Adds the password input to the textbox
 function PassInput(random) {
   document.getElementById("password").textContent= random;
 };
